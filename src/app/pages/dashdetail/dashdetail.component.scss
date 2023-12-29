@@ -1,0 +1,15 @@
+/* Définissez la hauteur souhaitée pour le tableau */
+.table-height {
+    max-height: 400px; /* Remplacez la valeur par celle que vous souhaitez */
+    overflow-y: auto; /* Ajoutez une barre de défilement verticale en cas de dépassement */
+  }
+  /* Style the "Total" row */
+.total-row {
+  font-weight: bold; /* Make the row bold */
+}
+
+/* Style the "Total" cell */
+.bold {
+  text-align: left; /* Align the "Total" cell content to the left */
+}
+

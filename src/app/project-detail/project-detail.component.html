@@ -1,0 +1,106 @@
+<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+      </div>
+    </div>
+  </div>
+  
+  <!-- Page content -->
+  <div class="container-fluid mt--7">
+    <!-- Table -->
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header border-0 d-flex align-items-center justify-content-between">
+            <h3 class="mb-0">
+                {{ project.name }}
+            </h3>
+            <div class="budget-info">
+                <span class="budget-label">Budget = </span>
+                <span class="budget-amount">{{ project.budget }}</span>
+            </div>
+        </div>
+          
+          <div class="card-header border-0">
+            <div class="row">
+              <div class="col">
+                <ul class="nav nav-pills">
+                  <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales" (click)="showRoadmap()">
+                    <a href="javascript:void(0)" class="nav-link py-2 px-3" [ngClass]="{'active':clicked===true}" data-toggle="tab" (click)="clicked=true;clicked1=false">
+                      <span class="d-none d-md-block">Roadmap</span>
+                      <span class="d-md-none">M</span>
+                    </a>
+                  </li>
+                  <li class="nav-item" data-toggle="chart" data-target="#chart-sales" (click)="showActual()">
+                    <a href="javascript:void(0)" class="nav-link py-2 px-3" [ngClass]="{'active':clicked1===true}" data-toggle="tab" (click)="clicked=false;clicked1=true">
+                      <span class="d-none d-md-block">Real Tasks</span>
+                      <span class="d-md-none">W</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-plus-circle clickable-icon"(click)="openAddForm(selectedTab)"></i>
+              </div>
+            </div>
+          </div>
+  
+          <div *ngIf="showRoadmapTable || showActualTable" class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">collaborator</th>
+                  <!-- Affichez ici les colonnes communes à tous les tableaux -->
+                  <ng-container *ngIf="selectedTab === 'roadmap'">
+                    <th scope="col">expected start date</th>
+                    <th scope="col">expected end date</th>
+                    <th scope="col">Duration</th>
+                  </ng-container>
+                  <ng-container *ngIf="selectedTab === 'taskreel'">
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col">Duration</th>
+                  </ng-container>
+                  <th scope="col">Status</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngIf="selectedTab === 'roadmap'; else taskreelSection">
+                  <tr *ngFor="let task of project.roadmapTasks">
+                    <td>{{ task.name }}</td>
+                    <td>{{ task.collaborateur }}</td>
+                    <td>{{ task.expected_start_date }}</td>
+                    <td>{{ task.expected_end_date }}</td>
+                    <td>{{ task.duree }}</td>
+                    <td>{{ task.status }}</td>
+                    <td>
+                      <i class="fas fa-trash clickable-icon" (click)="deleteTask(task)"></i>
+                    </td>
+                  </tr>
+                </ng-container>
+          
+                <ng-template #taskreelSection>
+                  <tr *ngFor="let taskreel of project.taskreelTasks">
+                    <td>{{ taskreel.name }}</td>
+                    <td>{{ taskreel.collaborateur }}</td>
+                    <td>{{ taskreel.start_date }}</td>
+                    <td>{{ taskreel.end_date }}</td>
+                    <td>{{ taskreel.duree }}</td>
+                    <td>{{ taskreel.status }}</td>
+                    <td>
+                      <i class="fas fa-trash clickable-icon" (click)="deleteTaskreel(taskreel)"></i>
+                    </td>
+                  </tr>
+                </ng-template>
+              </tbody>
+            </table>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  

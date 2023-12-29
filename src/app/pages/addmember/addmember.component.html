@@ -1,0 +1,72 @@
+<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+    <!-- Mask -->
+    <span class="mask bg-gradient-primary opacity-8"></span>
+    <!-- Header container -->
+    <div class="container-fluid d-flex align-items-center">
+      <div class="row">
+  
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt--7">
+    <div class="row">
+  
+      <div class="col-xxl-10 mx-auto my-custom-form-container">
+        <div class="card bg-secondary shadow">
+          <div class="card-header bg-white border-0">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h3 class="mb-0"> Add new member </h3>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+  
+              <div class="pl-lg-4">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="id"> ID </label>
+                      <input type="text" id="id" formControlName="id" class="form-control form-control-alternative">
+                    </div>
+                  </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="name">name</label>
+                    <input type="text" id="name" formControlName="name" class="form-control form-control-alternative">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="email"> email </label>
+                    <input type="text" id="email" class="form-control form-control-alternative" formControlName="email">
+                  </div>
+                </div>
+  
+  
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="role"> Role </label>
+                    <input type="text" id="role" class="form-control form-control-alternative"
+                      formControlName="role">
+                  </div>
+                </div>
+              
+                </div>
+  
+              
+              <hr class="my-4" />
+  
+  
+  
+             
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+           
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
